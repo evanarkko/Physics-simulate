@@ -3,11 +3,11 @@ package physics.logiikka;
 import java.awt.Graphics;
 
 public abstract class Kappale {
-    private double tilavuusKuutioina;
-    private double massaKiloina;
-    private Aine aine;
-    private int sijaintiX = 0;
-    private int sijaintiY = 0;
+    double tilavuusKuutioina;
+    double massaKiloina;
+    Aine aine;
+    int x = 100;
+    int y = 100;
 
     public Kappale(Aine aine, double tilavuusKuutioina) {
         this.aine = aine;
@@ -17,7 +17,14 @@ public abstract class Kappale {
 
     public Kappale(double massa) {
         this.massaKiloina = massa;
+        
     }
+    
+    public void liikuY(){
+        y++;
+    }
+    
+    private int laskemitat;
     
     
     public void luo(Graphics graphics){
