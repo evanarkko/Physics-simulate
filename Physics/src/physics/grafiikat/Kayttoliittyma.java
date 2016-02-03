@@ -1,4 +1,3 @@
-
 package physics.grafiikat;
 
 import java.util.Timer;
@@ -8,10 +7,8 @@ import java.util.TimerTask;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import physics.logiikka.Pallo;
-import physics.tapahtumat.LiikuY;
 
-
-public class Kayttoliittyma implements Runnable{
+public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private Pallo pallo;
@@ -31,24 +28,32 @@ public class Kayttoliittyma implements Runnable{
 
         frame.pack();
         frame.setVisible(true);
-        
-        
+
     }
 
     private void luoKomponentit(Container container) {
         Piirtoalusta piirtoalusta = new Piirtoalusta(pallo);
-        container.add(piirtoalusta);
+        container.add(piirtoalusta);    
         
-        Timer timer = new Timer();
-        TimerTask liikuY = new LiikuY(pallo, piirtoalusta);
-       
         
-        timer.scheduleAtFixedRate(liikuY, 0, 150);
+            try {
+                while(true){
+                    pallo.liikuY();
+                    piirtoalusta.repaint();
+                    Thread.sleep(1000);
+                }
+            
+        } catch (InterruptedException ex) {
+            
+        }
         
+
+        
+
     }
 
     public JFrame getFrame() {
         return frame;
     }
-    
+
 }
