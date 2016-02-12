@@ -4,23 +4,27 @@ import java.util.Timer;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import physics.logiikka.Pallo;
+import physics.kappaleet.Pallo;
+import physics.tapahtumat.AikaEteneePiirtoalustalla;
 
 public class Kayttoliittyma implements Runnable {
-
+    private Piirtoalusta piirtoalusta;
     private JFrame frame;
     private Pallo pallo;
 
     public Kayttoliittyma(Piirtoalusta piirtoalusta, Pallo pallo) {
+        this.piirtoalusta = piirtoalusta;
         this.pallo = pallo;
     }
 
     @Override
     public void run() {
         frame = new JFrame("Physics");
-        frame.setPreferredSize(new Dimension(1200, 700));
+        frame.setPreferredSize(new Dimension(1310, 730));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -32,24 +36,11 @@ public class Kayttoliittyma implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-        Piirtoalusta piirtoalusta = new Piirtoalusta(pallo);
-        container.add(piirtoalusta);    
+        AikaEteneePiirtoalustalla aikaEtenee = new AikaEteneePiirtoalustalla(piirtoalusta);
+        container.add(piirtoalusta);
+        Timer timer = new Timer();
         
-        
-            try {
-                while(true){
-                    pallo.liikuY();
-                    piirtoalusta.repaint();
-                    Thread.sleep(1000);
-                }
-            
-        } catch (InterruptedException ex) {
-            
-        }
-        
-
-        
-
+        timer.scheduleAtFixedRate(aikaEtenee, 0, 1);
     }
 
     public JFrame getFrame() {
