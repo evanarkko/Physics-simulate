@@ -23,7 +23,11 @@ public class Piirtoalusta extends JPanel{
             k.liiku();
         }
     }
-
+    
+    public void poistaKappale(){
+        
+    }
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

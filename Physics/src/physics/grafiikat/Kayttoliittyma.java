@@ -16,9 +16,8 @@ public class Kayttoliittyma implements Runnable {
     private JFrame frame;
     private Pallo pallo;
 
-    public Kayttoliittyma(Piirtoalusta piirtoalusta, Pallo pallo) {
+    public Kayttoliittyma(Piirtoalusta piirtoalusta) {
         this.piirtoalusta = piirtoalusta;
-        this.pallo = pallo;
     }
 
     @Override
