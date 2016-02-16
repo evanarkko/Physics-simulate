@@ -18,7 +18,7 @@ public class Piirtoalusta extends JPanel{
         kappaleet.add(kappale);
     }
     
-    public void palloLiikkuu(){
+    public void kappaleetLiikkuvat(){
         for(Kappale k : kappaleet){
             k.liiku();
         }

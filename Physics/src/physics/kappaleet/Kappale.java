@@ -9,8 +9,8 @@ public abstract class Kappale {
     Aine aine;
     double x = 100;
     double y = 100;
-    double nopeusX = 0.21;
-    double nopeusY = 0.21;
+    double nopeusX = 0.0;
+    double nopeusY = 0.0;
 
     public Kappale(Aine aine, double tilavuusKuutioina) {
         this.aine = aine;
@@ -27,6 +27,14 @@ public abstract class Kappale {
         this.y = y;
     }
     
+    public void kiihdyX(double kiihtyvyys){
+        nopeusX += kiihtyvyys;
+    }
+    
+    public void kiihdyY(double kiihtyvyys){
+        nopeusY += kiihtyvyys;
+    }
+    
     public void liiku(){
         if(y > 671 || y < 0){
             nopeusY *= (-1);
@@ -34,12 +42,34 @@ public abstract class Kappale {
         if(x > 1270 || x < 0){
             nopeusX *= (-1);
         }
+        kiihdyY(0.001);
+        if(nopeusX > 0){
+            kiihdyX(-0.0005);
+        } else if(nopeusX < 0) {
+            kiihdyX((0.0005));
+        }
+            
+            
         
         y += nopeusY;
         x += nopeusX;
     }
     
     private int laskemitat;
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getMassaKiloina() {
+        return massaKiloina;
+    }
+    
+    
     
     
     public void luo(Graphics graphics){

@@ -16,7 +16,7 @@ public class Pallo extends Kappale{
 
     public Pallo(double massa) {
         super(massa);
-        tilavuusKuutioina = 20;
+        tilavuusKuutioina = 200;
         sade = laskeSade(tilavuusKuutioina);
     }
     
@@ -38,7 +38,6 @@ public class Pallo extends Kappale{
 
     @Override
     public void luo(Graphics graphics) {
-        int r = (int) laskeSade(this.tilavuusKuutioina);
         graphics.fillOval((int)x, (int)y, 2*(int)sade, 2*(int)sade);
     }
     

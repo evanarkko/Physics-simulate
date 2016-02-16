@@ -9,10 +9,12 @@ import physics.kappaleet.Kuutio;
 public class Main {
 
     public static void main(String[] args) {
-        Pallo pallo = new Pallo(1);
-        Kuutio kuutio = new Kuutio(1);
         Piirtoalusta piirtoalusta = new Piirtoalusta();
+        
+        Kuutio kuutio = new Kuutio(1);
         piirtoalusta.lisaaKappale(kuutio);
+        Pallo pallo = new Pallo(1);
+        pallo.asetaKoordinaatit(200, 0);
         piirtoalusta.lisaaKappale(pallo);
         
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma(piirtoalusta);

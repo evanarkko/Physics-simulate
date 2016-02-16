@@ -39,7 +39,7 @@ public class Kayttoliittyma implements Runnable {
         container.add(piirtoalusta);
         Timer timer = new Timer();
         
-        timer.scheduleAtFixedRate(aikaEtenee, 0, 1);
+        timer.scheduleAtFixedRate(aikaEtenee, 0, 2);
     }
 
     public JFrame getFrame() {
