@@ -11,10 +11,13 @@ import physics.kappaleet.Kappale;
  *
  * @author eamiller
  */
-public class Gravitaatio implements Voima{
+public class Gravitaatio implements Voima {
+
+    private boolean kappaleetkoskevat = false;
     private Kappale kpl1;
     private Kappale kpl2;
-    private double G = 6.67 * Math.pow(10, -11);
+    private double G = 10;
+//          6.67  * Math.pow(10, -11);
     private double kpl1kiihtyyX;
     private double kpl2kiihtyyX;
     private double kpl1kiihtyyY;
@@ -24,45 +27,52 @@ public class Gravitaatio implements Voima{
         this.kpl1 = kappale1;
         this.kpl2 = kappale2;
     }
-    
-    public void laskeKiihtyvyydetY(){
-        double etaisyys, voima;
-        etaisyys = kpl1.getY() - kpl2.getY();
-        voima = G*((kpl1.getMassaKiloina()*kpl2.getMassaKiloina())
-                /Math.pow(etaisyys, 2));
-        if(etaisyys < 0){
-            kpl1kiihtyyY = voima/kpl1.getMassaKiloina();
-            kpl2kiihtyyY = (-1) * voima/kpl2.getMassaKiloina();
-        } else {
-            kpl1kiihtyyY = (-1) * voima/kpl1.getMassaKiloina();
-            kpl2kiihtyyY = voima/kpl2.getMassaKiloina();
+
+    public void laskeKiihtyvyydet() {
+        double etaisyysX, etaisyysY, etaisyys, voima, osuusX, osuusY;
+        etaisyysX = kpl1.getX() - kpl2.getX();
+        etaisyysY = kpl1.getY() - kpl2.getY();
+        etaisyys = Math.sqrt(Math.pow(etaisyysX, 2) + Math.pow(etaisyysY, 2));
+        osuusX = Math.abs(etaisyysX) / (Math.abs(etaisyysX) + Math.abs(etaisyysY));
+        osuusY = 1 - osuusX;
+        voima = G * ((kpl1.getMassaKiloina() * kpl2.getMassaKiloina())
+                / Math.pow(etaisyys, 2));
+
+        if (etaisyys < 50) {
+            kappaleetkoskevat = true;
         }
-    }
-    
-    public void laskeKiihtyvyydetX(){
-        double etaisyys, voima;
-        etaisyys = kpl1.getX() - kpl2.getX();
-        voima = G*((kpl1.getMassaKiloina()*kpl2.getMassaKiloina())
-                /Math.pow(etaisyys, 2));
-        if(etaisyys < 0){
-            kpl1kiihtyyX = voima/kpl1.getMassaKiloina();
-            kpl2kiihtyyX = (-1) * voima/kpl2.getMassaKiloina();
+
+        if (etaisyysX < 0) {
+            kpl1kiihtyyX = osuusX * voima / kpl1.getMassaKiloina();
+            kpl2kiihtyyX = osuusX * (-1) * voima / kpl2.getMassaKiloina();
         } else {
-            kpl1kiihtyyX = (-1) * voima/kpl1.getMassaKiloina();
-            kpl2kiihtyyX = voima/kpl2.getMassaKiloina();
+            kpl1kiihtyyX = osuusX * (-1) * voima / kpl1.getMassaKiloina();
+            kpl2kiihtyyX = osuusX * voima / kpl2.getMassaKiloina();
+        }
+
+        if (etaisyysY < 0) {
+            kpl1kiihtyyY = osuusY * voima / kpl1.getMassaKiloina();
+            kpl2kiihtyyY = osuusY * (-1) * voima / kpl2.getMassaKiloina();
+        } else {
+            kpl1kiihtyyY = osuusY * (-1) * voima / kpl1.getMassaKiloina();
+            kpl2kiihtyyY = osuusY * voima / kpl2.getMassaKiloina();
         }
     }
 
     @Override
     public void vaikuta() {
-        kpl1.kiihdyY(kpl1kiihtyyY);
-        kpl1.kiihdyX(kpl1kiihtyyX);
-        
-        kpl2.kiihdyY(kpl2kiihtyyY);
-        kpl2.kiihdyX(kpl2kiihtyyX);
-        
+        laskeKiihtyvyydet();
+        if (kappaleetkoskevat) {
+            kpl1.pysayta();
+            kpl2.pysayta();
+        } else {
+            kpl1.kiihdytaY(kpl1kiihtyyY);
+            kpl1.kiihdytaX(kpl1kiihtyyX);
+
+            kpl2.kiihdytaY(kpl2kiihtyyY);
+            kpl2.kiihdytaX(kpl2kiihtyyX);
+        }
+
     }
-    
-    
-    
+
 }

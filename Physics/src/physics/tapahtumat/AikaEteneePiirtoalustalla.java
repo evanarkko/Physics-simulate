@@ -21,6 +21,7 @@ public class AikaEteneePiirtoalustalla extends TimerTask{
     
     @Override
     public void run() {
+        piirtoalusta.voimatVaikuttavat();
         piirtoalusta.kappaleetLiikkuvat();
         piirtoalusta.repaint();
     }

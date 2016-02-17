@@ -16,7 +16,7 @@ public class Pallo extends Kappale{
 
     public Pallo(double massa) {
         super(massa);
-        tilavuusKuutioina = 200;
+        tilavuusKuutioina = 10000;
         sade = laskeSade(tilavuusKuutioina);
     }
     
