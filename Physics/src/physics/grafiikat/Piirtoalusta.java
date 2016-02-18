@@ -50,9 +50,9 @@ public class Piirtoalusta extends JPanel {
         for (Kappale k : kappaleet) {
             g.setColor(new Color(pun, vih, sin));
             k.luo(g);
-            pun -= 100;
+            pun -= 30;
             sin += 50;
-            vih += 100;
+            vih += 30;
         }
     }
 

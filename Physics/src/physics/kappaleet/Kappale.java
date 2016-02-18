@@ -56,11 +56,11 @@ public abstract class Kappale {
     }
     
     public void kiihdytaX(double nopeudenmuutos){
-        this.nopeusX = nopeudenmuutos;
+        this.nopeusX += nopeudenmuutos;
     }
     
     public void kiihdytaY(double nopeudenmuutos){
-        this.nopeusY = nopeudenmuutos;
+        this.nopeusY += nopeudenmuutos;
     }
     
     public double getX() {
