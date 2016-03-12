@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Voimat;
+package physics.Voimat;
 
 import physics.kappaleet.Kappale;
 
@@ -28,7 +28,7 @@ public class Gravitaatio implements Voima {
         this.kpl2 = kappale2;
     }
 
-    public void laskeKiihtyvyydet() {
+    private void laskeKiihtyvyydet() {
         double etaisyysX, etaisyysY, etaisyys, voima, osuusX, osuusY;
         etaisyysX = kpl1.getX() - kpl2.getX();
         etaisyysY = kpl1.getY() - kpl2.getY();

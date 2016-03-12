@@ -27,7 +27,7 @@ public class Kuutio extends Kappale{
 
     @Override
     public void luo(Graphics graphics) {
-        graphics.fillRect((int)x,(int)y,(int)sivu,(int)sivu);
+        graphics.fill3DRect((int)x,(int)y,(int)sivu,(int)sivu, true);
     }
 
     @Override
