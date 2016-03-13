@@ -3,7 +3,7 @@ package physics.kappaleet;
 import java.awt.Graphics;
 import physics.logiikka.Aine;
 
-public abstract class Kappale {
+public abstract class PerusKappale {
     
     boolean lattialla;
     double tilavuusKuutioina;
@@ -19,14 +19,14 @@ public abstract class Kappale {
     double kimmoisuus;
     double kitkakerroin;
 
-    public Kappale(Aine aine, double tilavuusKuutioina) {
+    public PerusKappale(Aine aine, double tilavuusKuutioina) {
         this.aine = aine;
         this.tilavuusKuutioina = tilavuusKuutioina;
         this.massaKiloina = this.aine.getTiheys() * this.tilavuusKuutioina;
         this.kimmoisuus = 0.75;
     }
 
-    public Kappale(double massa) {
+    public PerusKappale(double massa) {
         this.massaKiloina = massa;
         this.kimmoisuus = 0.75;
         this.kitkakerroin = 0.99;

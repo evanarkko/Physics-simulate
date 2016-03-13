@@ -5,16 +5,16 @@
  */
 package physics.Voimat;
 
-import physics.kappaleet.Kappale;
+import physics.kappaleet.PerusKappale;
 
 /**
  *
  * @author eamiller
  */
 public class Maan_Vetovoima implements Voima{
-    private Kappale kappale;
+    private PerusKappale kappale;
 
-    public Maan_Vetovoima(Kappale kappale) {
+    public Maan_Vetovoima(PerusKappale kappale) {
         this.kappale = kappale;
     }
     

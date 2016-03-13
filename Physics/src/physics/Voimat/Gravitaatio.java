@@ -5,7 +5,7 @@
  */
 package physics.Voimat;
 
-import physics.kappaleet.Kappale;
+import physics.kappaleet.PerusKappale;
 
 /**
  *
@@ -14,8 +14,8 @@ import physics.kappaleet.Kappale;
 public class Gravitaatio implements Voima {
 
     private boolean kappaleetkoskevat = false;
-    private Kappale kpl1;
-    private Kappale kpl2;
+    private PerusKappale kpl1;
+    private PerusKappale kpl2;
     private double G = 10;
 //          6.67  * Math.pow(10, -11);
     private double kpl1kiihtyyX;
@@ -23,7 +23,7 @@ public class Gravitaatio implements Voima {
     private double kpl1kiihtyyY;
     private double kpl2kiihtyyY;
 
-    public Gravitaatio(Kappale kappale1, Kappale kappale2) {
+    public Gravitaatio(PerusKappale kappale1, PerusKappale kappale2) {
         this.kpl1 = kappale1;
         this.kpl2 = kappale2;
     }

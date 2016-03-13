@@ -8,15 +8,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+import physics.kappaleet.Hahmo;
 import physics.kappaleet.Pallo;
 
 public class Kayttoliittyma implements Runnable {
     private Piirtoalusta piirtoalusta;
     private JFrame frame;
-    private Pallo pallo;
+    private Hahmo hahmo;
 
-    public Kayttoliittyma(Piirtoalusta piirtoalusta) {
+    public Kayttoliittyma(Piirtoalusta piirtoalusta, Hahmo hahmo) {
         this.piirtoalusta = piirtoalusta;
+        this.hahmo = hahmo;
     }
 
     @Override
@@ -35,6 +37,8 @@ public class Kayttoliittyma implements Runnable {
 
     private void luoKomponentit(Container container) {
         container.add(piirtoalusta);
+        this.piirtoalusta.asetaHahmo(hahmo);
+        frame.addKeyListener(new NappaimistonKuuntelija(piirtoalusta, hahmo));
     }
 
     public JFrame getFrame() {

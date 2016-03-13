@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import physics.logiikka.Aine;
 
 
-public class Pallo extends Kappale{
+public class Pallo extends PerusKappale{
     private double sade;
     
 

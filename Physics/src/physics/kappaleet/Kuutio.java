@@ -8,7 +8,7 @@ import physics.logiikka.Aine;
  *
  * @author eamiller
  */
-public class Kuutio extends Kappale{
+public class Kuutio extends PerusKappale{
     private double sivu;
     
 

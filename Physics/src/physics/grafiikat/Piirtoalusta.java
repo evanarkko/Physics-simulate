@@ -8,20 +8,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import physics.kappaleet.Kappale;
+import physics.kappaleet.Hahmo;
+import physics.kappaleet.PerusKappale;
 import physics.kappaleet.Neste;
 
 public class Piirtoalusta extends JPanel {
 
+    private Hahmo hahmo;
     private boolean gravitaatioPaalla;
     private ArrayList<Voima> voimat;
     private ArrayList<Voima> gravitaatiot;
-    private ArrayList<Kappale> kappaleet;
+    private ArrayList<PerusKappale> kappaleet;
     private ArrayList<Neste> nesteet;
 
     public Piirtoalusta() {
         this.nesteet = new ArrayList<Neste>();
-        this.kappaleet = new ArrayList<Kappale>();
+        this.kappaleet = new ArrayList<PerusKappale>();
         this.voimat = new ArrayList<>();
         this.gravitaatiot = new ArrayList<>();
     }
@@ -33,7 +35,6 @@ public class Piirtoalusta extends JPanel {
             this.gravitaatioPaalla = false;
         }
     }
-
     
     
 
@@ -45,15 +46,19 @@ public class Piirtoalusta extends JPanel {
         this.nesteet.add(neste);
     }
 
-    public void lisaaKappale(Kappale kappale) {
+    public void lisaaKappale(PerusKappale kappale) {
         voimat.add(new Maan_Vetovoima(kappale));
         voimat.add(new Kitkavoima(kappale));
         if (!kappaleet.isEmpty()) {
-            for (Kappale k : kappaleet) {
+            for (PerusKappale k : kappaleet) {
                 gravitaatiot.add(new Gravitaatio(k, kappale));
             }
         }
         kappaleet.add(kappale);
+    }
+    
+    public void asetaHahmo(Hahmo h){
+        this.hahmo = h;
     }
 
     public void voimatVaikuttavat() {
@@ -70,7 +75,7 @@ public class Piirtoalusta extends JPanel {
     }
 
     public void kappaleetLiikkuvat() {
-        for (Kappale k : kappaleet) {
+        for (PerusKappale k : kappaleet) {
             k.liiku();
         }
     }
@@ -81,14 +86,24 @@ public class Piirtoalusta extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        int pun = 200, vih = 100, sin = 150;
+        int pun = 0, vih = 255, sin = 126;
         super.paintComponent(g);
-        for (Kappale k : kappaleet) {
+        hahmo.luo(g);
+        for (PerusKappale k : kappaleet) {
             g.setColor(new Color(pun, vih, sin));
             k.luo(g);
-            pun -= 30;
-            sin += 50;
-            vih += 30;
+            pun++;
+            if(pun == 255){
+                pun = 0;
+            }
+            sin--;
+            if(sin == 0){
+                sin = 200;
+            }
+            vih--;
+            if(vih == 0){
+                vih = 255;
+            }
         }
     }
 

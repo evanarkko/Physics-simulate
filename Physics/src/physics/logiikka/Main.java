@@ -4,6 +4,7 @@ import physics.kappaleet.Pallo;
 import javax.swing.SwingUtilities;
 import physics.grafiikat.Kayttoliittyma;
 import physics.grafiikat.Piirtoalusta;
+import physics.kappaleet.Hahmo;
 import physics.kappaleet.Kuutio;
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         Piirtoalusta piirtoalusta = new Piirtoalusta();
+        Hahmo paahenkilo = new Hahmo(500, 350);
         
         Kuutio pallo1 = new Kuutio(3.9);
         Pallo pallo2 = new Pallo(300.9);
@@ -23,13 +25,13 @@ public class Main {
         pallo1.kiihdytaX(3);
         pallo3.kiihdytaX(4);
         
-        piirtoalusta.lisaaKappale(pallo1);
-        piirtoalusta.lisaaKappale(pallo2);
-        piirtoalusta.lisaaKappale(pallo3);
-        piirtoalusta.gravitaatioPaalla(true);
+//        piirtoalusta.lisaaKappale(pallo1);
+//        piirtoalusta.lisaaKappale(pallo2);
+//        piirtoalusta.lisaaKappale(pallo3);
+        piirtoalusta.gravitaatioPaalla(false);
         
         
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(piirtoalusta);
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(piirtoalusta, paahenkilo);
         SwingUtilities.invokeLater(kayttoliittyma);
 
         while (true) {

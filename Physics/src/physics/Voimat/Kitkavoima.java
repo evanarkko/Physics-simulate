@@ -1,6 +1,6 @@
 package physics.Voimat;
 
-import physics.kappaleet.Kappale;
+import physics.kappaleet.PerusKappale;
 
 /**
  *
@@ -8,9 +8,9 @@ import physics.kappaleet.Kappale;
  */
 public class Kitkavoima implements Voima {
 
-    private Kappale kappale;
+    private PerusKappale kappale;
 
-    public Kitkavoima(Kappale kappale) {
+    public Kitkavoima(PerusKappale kappale) {
         this.kappale = kappale;
     }
 
