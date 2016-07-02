@@ -7,12 +7,12 @@ import java.awt.Graphics;
  *
  * @author eamiller
  */
-public class Hahmo {
+public class Pelihahmo {
     int x;
     int y;
     int menosuunta;
 
-    public Hahmo(int x, int y) {
+    public Pelihahmo(int x, int y) {
         this.x = x;
         this.y = y;
         menosuunta = 1;

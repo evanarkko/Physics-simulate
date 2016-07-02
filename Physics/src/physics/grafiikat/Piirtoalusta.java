@@ -8,14 +8,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import physics.kappaleet.Hahmo;
+import physics.kappaleet.Pelihahmo;
 import physics.kappaleet.PerusKappale;
 import physics.kappaleet.Neste;
+import physics.kappaleet.Vihollinen;
 
 public class Piirtoalusta extends JPanel {
 
-    private Hahmo hahmo;
+    private Pelihahmo hahmo;
     private boolean gravitaatioPaalla;
+    private ArrayList<Vihollinen> viholliset;
     private ArrayList<Voima> voimat;
     private ArrayList<Voima> gravitaatiot;
     private ArrayList<PerusKappale> kappaleet;
@@ -26,6 +28,7 @@ public class Piirtoalusta extends JPanel {
         this.kappaleet = new ArrayList<PerusKappale>();
         this.voimat = new ArrayList<>();
         this.gravitaatiot = new ArrayList<>();
+        this.viholliset = new ArrayList<>();
     }
 
     public void gravitaatioPaalla(boolean paalla) {
@@ -36,7 +39,9 @@ public class Piirtoalusta extends JPanel {
         }
     }
     
-    
+    public void lisaaVihollinen(Vihollinen v){
+        this.viholliset.add(v);
+    }
 
     public void lisaaNeste(Neste neste){
         /*
@@ -57,7 +62,7 @@ public class Piirtoalusta extends JPanel {
         kappaleet.add(kappale);
     }
     
-    public void asetaHahmo(Hahmo h){
+    public void asetaHahmo(Pelihahmo h){
         this.hahmo = h;
     }
 
@@ -86,24 +91,13 @@ public class Piirtoalusta extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        int pun = 0, vih = 255, sin = 126;
         super.paintComponent(g);
         hahmo.luo(g);
+        for(Vihollinen v : viholliset){
+            v.luo(g);
+        }
         for (PerusKappale k : kappaleet) {
-            g.setColor(new Color(pun, vih, sin));
             k.luo(g);
-            pun++;
-            if(pun == 255){
-                pun = 0;
-            }
-            sin--;
-            if(sin == 0){
-                sin = 200;
-            }
-            vih--;
-            if(vih == 0){
-                vih = 255;
-            }
         }
     }
 

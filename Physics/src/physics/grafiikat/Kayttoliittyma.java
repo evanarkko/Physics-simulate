@@ -8,15 +8,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import physics.kappaleet.Hahmo;
+import physics.kappaleet.Pelihahmo;
 import physics.kappaleet.Pallo;
 
 public class Kayttoliittyma implements Runnable {
     private Piirtoalusta piirtoalusta;
     private JFrame frame;
-    private Hahmo hahmo;
+    private Pelihahmo hahmo;
 
-    public Kayttoliittyma(Piirtoalusta piirtoalusta, Hahmo hahmo) {
+    public Kayttoliittyma(Piirtoalusta piirtoalusta, Pelihahmo hahmo) {
         this.piirtoalusta = piirtoalusta;
         this.hahmo = hahmo;
     }

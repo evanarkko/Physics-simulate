@@ -1,6 +1,7 @@
 
 package physics.kappaleet;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import physics.logiikka.Aine;
 
@@ -19,15 +20,17 @@ public class Kuutio extends PerusKappale{
 
     public Kuutio(double massa) {
         super(massa);
-        tilavuusKuutioina = 2000;
-        sivu = Math.cbrt(2000);
+        sivu = 25;
+        tilavuusKuutioina = Math.pow(sivu, 3);
+        this.kimmoisuus = 0;
     }
     
     
 
     @Override
     public void luo(Graphics graphics) {
-        graphics.fill3DRect((int)x,(int)y,(int)sivu,(int)sivu, true);
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect((int)x,(int)y,(int)sivu,(int)sivu);
     }
 
     @Override

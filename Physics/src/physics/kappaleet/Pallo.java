@@ -1,6 +1,7 @@
 
 package physics.kappaleet;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import physics.logiikka.Aine;
 
@@ -38,6 +39,10 @@ public class Pallo extends PerusKappale{
 
     @Override
     public void luo(Graphics graphics) {
+        int pun = (int) (Math.random() * 255);
+        int sin = 0;//(int) (Math.random() * 255);
+        int vih = 0;//(int) (Math.random() * 255);
+        graphics.setColor(new Color(pun, vih, sin));
         graphics.fillOval((int)x, (int)y, 2*(int)sade, 2*(int)sade);
     }
     
